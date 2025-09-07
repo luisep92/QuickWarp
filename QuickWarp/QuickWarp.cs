@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 //   - Falls back to Unity SceneManager strategies if needed.
 // ============================================================================
 
-[BepInPlugin("com.tu.nick.silksong.quickwarp", "Silksong Quick Warp", "1.3.0")]
+[BepInPlugin("com.luisep92.silksong.quickwarp", "Quick Warp", "1.1.0")]
 public class QuickWarp : BaseUnityPlugin
 {
     // ----------------------------- Types ------------------------------------
