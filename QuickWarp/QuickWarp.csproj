@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>QuickWarp</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- BepInEx -->
+    <Reference Include="BepInEx">
+      <HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Unity: la mayoría de cosas ya vienen en CoreModule -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Estos solo si existen en tu Managed -->
+    <Reference Include="UnityEngine" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.dll')">
+      <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.Physics2DModule.dll')">
+      <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.InputLegacyModule.dll')">
+      <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Copia al folder de plugins -->
+  <Target Name="PostBuild" AfterTargets="Build">
+    <PropertyGroup>
+      <PluginsDir>..\..\BepInEx\plugins\QuickWarp\</PluginsDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(PluginsDir)" />
+    <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll"
+          DestinationFiles="$(PluginsDir)$(AssemblyName).dll" />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\BepInEx\core\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

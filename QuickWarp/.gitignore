@@ -1,0 +1,23 @@
+# Build outputs
+bin/
+obj/
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Logs / temporales
+*.log
+*.tmp
+*.cache
+*.pdb
+*.mdb
