@@ -1,13 +1,7 @@
 using BepInEx;
-using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 // KeyCode docs https://docs.unity3d.com/6000.2/Documentation/ScriptReference/KeyCode.html
 internal class Configuration
