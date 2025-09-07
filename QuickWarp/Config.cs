@@ -14,7 +14,7 @@ internal class Configuration
 {
     public KeyCode saveWarpKey = KeyCode.F6;
     public KeyCode loadWarpKey = KeyCode.F7;
-    private readonly string configFile = "./BePinEx/plugins/QuickWarp/QuickWarp.cfg";
+    private readonly string configFile = Path.Combine(Paths.ConfigPath, "QuickWarp.cfg");
 
 
     private Configuration()

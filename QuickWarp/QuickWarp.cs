@@ -43,7 +43,7 @@ internal class QuickWarp : BaseUnityPlugin
     private const float PlayerFindTimeout = 8f;
 
     // ----------------------------- Paths ------------------------------------
-    private static string SavePath => Path.Combine(Paths.ConfigPath, "silksong_quickwarp.json");
+    private static string SavePath => Path.Combine(Paths.ConfigPath, "QuickWarp_data.json");
 
     // ----------------------------- State ------------------------------------
     private WarpData _warp;
