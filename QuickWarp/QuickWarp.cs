@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Configuration;
 
 // ============================================================================
 //  Silksong Quick Warp
@@ -19,7 +20,7 @@ using UnityEngine.SceneManagement;
 // ============================================================================
 
 [BepInPlugin("com.luisep92.silksong.quickwarp", "Quick Warp", "1.1.0")]
-public class QuickWarp : BaseUnityPlugin
+internal class QuickWarp : BaseUnityPlugin
 {
     // ----------------------------- Types ------------------------------------
     [Serializable]
@@ -31,8 +32,9 @@ public class QuickWarp : BaseUnityPlugin
     }
 
     // ---------------------------- Constants ---------------------------------
-    private const KeyCode SaveKey = KeyCode.F6;
-    private const KeyCode LoadKey = KeyCode.F7;
+    private Configuration configuration = Configuration.Read();
+    private KeyCode SaveKey = KeyCode.F6;
+    private KeyCode LoadKey = KeyCode.F7;
 
     private const float KeyDebounce = 0.20f; // seconds
     private const float LoaderWaitTimeout = 8f;
@@ -58,11 +60,10 @@ public class QuickWarp : BaseUnityPlugin
     private void Awake()
     {
         LoadSavedWarpIfAny();
-
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
-
-        Logger.LogInfo("QuickWarp loaded. F6 = Save warp, F7 = Load warp");
+        LoadConfiguration();
+        Logger.LogInfo($"QuickWarp loaded. {this.SaveKey} = Save warp, {this.LoadKey} = Load warp");
 
         TryFindInternalSceneLoader();
     }
@@ -562,5 +563,11 @@ public class QuickWarp : BaseUnityPlugin
     {
         try { SceneManager.LoadScene(sceneName, LoadSceneMode.Single); return true; }
         catch (Exception ex) { Logger.LogWarning($"[Warp] LoadScene sync threw: {ex.Message}"); return false; }
+    }
+
+    private void LoadConfiguration()
+    {
+        this.SaveKey = configuration.saveWarpKey;
+        this.LoadKey = configuration.loadWarpKey;
     }
 }
