@@ -1,1 +1,1 @@
-Enger `QuickWarp` directory to see the right `Readme.md`.
+Enter `QuickWarp` directory to see the right `Readme.md`.
