@@ -4,6 +4,31 @@ A simple BepInEx mod that lets you save and load custom waypoints in **Hollow Kn
 
 ---
 
+## Installation
+
+1. Install **BepInEx**: [https://github.com/BepInEx/BepInEx/releases](https://github.com/BepInEx/BepInEx/releases)  
+2. Download this mod.
+3. Unzip the content into the game’s root folder (the same place where the `.exe` is located).
+   - The file structure should look like:
+     ```
+     <GameFolder>/
+       BepInEx/
+         plugins/
+           QuickWarp/
+             QuickWarp.dll
+     ```
+
+---
+## Configuration
+After opening the game at least one time, a configuration file is generated in `<GameFolder>/BepInEx/config`:
+- QuickWarp.cfg
+```
+saveWarpKey = <Key1>
+loadWarpKey = <Key2>
+```
+By default, we use F6/F7. But you can set whatever unity keycode you want (check the name in the [link](https://docs.unity3d.com/6000.2/Documentation/ScriptReference/KeyCode.html))
+
+
 ## Usage
 
 - **Save a waypoint:** Press **F6**  
