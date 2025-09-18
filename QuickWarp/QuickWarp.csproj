@@ -6,34 +6,36 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- BepInEx -->
-    <Reference Include="BepInEx">
-      <HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight Silksong\Hollow Knight Silksong_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
-
-    <!-- Unity: la mayoría de cosas ya vienen en CoreModule -->
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
-
-    <!-- Estos solo si existen en tu Managed -->
-    <Reference Include="UnityEngine" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.dll')">
-      <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight Silksong\Hollow Knight Silksong_Data\Managed\UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="UnityEngine.Physics2DModule" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.Physics2DModule.dll')">
+    <Reference Include="UnityEngine.Physics2DModule">
       <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule" Condition="Exists('..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.InputLegacyModule.dll')">
+    <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>..\..\Hollow Knight Silksong_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>..\..\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\BepInEx\core\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
-  <!-- Copia al folder de plugins -->
+  <!-- Copy to plugins directory -->
   <Target Name="PostBuild" AfterTargets="Build">
     <PropertyGroup>
       <PluginsDir>..\..\BepInEx\plugins\QuickWarp\</PluginsDir>
@@ -42,11 +44,4 @@
     <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll"
           DestinationFiles="$(PluginsDir)$(AssemblyName).dll" />
   </Target>
-
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\BepInEx\core\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
