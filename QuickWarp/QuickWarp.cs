@@ -4,7 +4,6 @@ using UnityEngine;
 [BepInPlugin("com.luisep92.silksong.quickwarp", "Quick Warp", "2.0.0")]
 public sealed class QuickWarp : BaseUnityPlugin
 {
-    // Config/keys could be made real BepInEx config entries if you like.
     private KeyCode _saveKey = KeyCode.F6;
     private KeyCode _loadKey = KeyCode.F7;
     private float _debounce = 0.2f;
@@ -18,10 +17,9 @@ public sealed class QuickWarp : BaseUnityPlugin
         _saveKey = cfg.saveWarpKey;
         _loadKey = cfg.loadWarpKey;
 
-        var players = new PlayerLocator();
-        var scenes  = new SceneSwitcher();
+        var scenes = new SceneSwitcher();
         var storage = new JsonWarpStorage();
-        _warp = new WarpController(players, scenes, storage);
+        _warp = new WarpController(scenes, storage);
 
         Logger.LogInfo($"QuickWarp loaded. {_saveKey}=Save, {_loadKey}=Load");
     }
