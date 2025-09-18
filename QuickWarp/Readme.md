@@ -44,10 +44,10 @@ By default, we use F6/F7. But you can set whatever unity keycode you want (check
 
 ## ⚠️ Important Notes
 
-This mod does **not** save or restore the game state — it only moves your character’s position.  
+This mod does **not** save or restore the game state — it only moves your character’s position and load a scene if necessary. 
+
 Some behaviors may break the game logic:
 
-- Sitting on a bench and pressing **F7** → You will float (since sitting disables normal physics).
 - Saving in the middle of a boss fight → Undefined behavior (boss fight may not trigger properly when you warp back).
 - Other scripted events may also desync.
 
