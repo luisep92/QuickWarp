@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
 
+namespace QuickWarp.Domain;
+
 [Serializable]
-public class WarpData
+public sealed class WarpData
 {
-    public string Scene;
+    public string Scene = string.Empty;
+
     public Vector3 Position;
+
     public Vector2 Velocity;
 }
